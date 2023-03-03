@@ -32,7 +32,7 @@ params["marker"] = markerLoc;
 try{
 var savedInitialZoom = localStorage.getItem("mapZoom");
 }catch{}
-var initialZoom = 4;
+var initialZoom = 7;
 if (savedInitialZoom)
     initialZoom = parseInt(savedInitialZoom);
 params["zoom"] = initialZoom;
@@ -44,8 +44,8 @@ function loadMap()
     // mapConnectionStatus = "online";
     map = L.map('mapContainer',
     {
-        minZoom: 4,
-        maxZoom: 4,
+        minZoom: 3,
+        maxZoom: 7,
         click: true,
         attributionControl: false,
         radioButtons: true,
@@ -91,7 +91,7 @@ function loadMap()
         setHash();
     });
 
-    positron = L.tileLayer(window.location.origin + window.location.pathname + '{x}/{y}.png').addTo(map);
+    positron = L.tileLayer(window.location.origin + "/toril-map-{z}/{x}/{y}.png").addTo(map);
 
     if (window.location.hash.length > 0)
     {
